@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kedai Arya - Produk pilihan dengan cita rasa khas Kalimantan.">
+  <title>Kedai Arya | Produk Lokal Berkualitas</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #263126;
+      background: #faf9f5;
+      line-height: 1.6;
+    }
+
+    :root {
+      --green: #875394;
+      --green2: #2e106f;
+      --cream: #f4efe3;
+      --gold: #c99b45;
+      --white: #ffffff;
+      --dark: #172019;
+      --muted: #69736b;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e7e4dc;
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: .5px;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #354239;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(90deg, #875394, #875394),
+        url("hero.jpg") center/cover;
+      color: white;
+    }
+
+    .hero-content {
+      padding: 100px 0;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: #e8c779;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 1.08rem;
+      color: #e8eee9;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #060d10;
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,.6);
+    }
+
+    section { padding: 90px 0; }
+
+    .section-head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .section-head h2 {
+      color: var(--green);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .section-head p { color: var(--muted); }
+
+    .products {
+      background: var(--cream);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(23, 62, 94, 0.08);
+      border: 1px solid #e9e5db;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 38px rgba(27,48,35,.14);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      display: block;
+      background: #e8e5dc;
+    }
+
+    .product-info { padding: 24px; }
+
+    .product-tag {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: .75rem;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+    }
+
+    .product-info h3 {
+      color: var(--green);
+      font-size: 1.45rem;
+      margin: 7px 0 8px;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: .94rem;
+      min-height: 76px;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: #e8e5dc;
+    }
+
+    .about h2 {
+      color: var(--green);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .value {
+      padding: 16px;
+      border-radius: 10px;
+      background: var(--cream);
+      text-align: center;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .contact {
+      background: var(--green);
+      color: white;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .contact p { color: #dce6df; }
+
+    .contact-info {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 25px;
+      border-radius: 14px;
+    }
+
+    .contact-info p { margin: 8px 0; }
+
+    footer {
+      background: #2679a3;
+      color: #bfcfc3;
+      padding: 25px 0;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 850px) {
+      nav ul { gap: 13px; }
+      .product-grid,
+      .about-grid,
+      .contact-box { grid-template-columns: 1fr; }
+      .about-image { height: 300px; }
+    }
+
+    @media (max-width: 560px) {
+      nav { padding: 12px 0; }
+      nav ul { display: none; }
+      .hero { min-height: 580px; }
+      section { padding: 65px 0; }
+      .product-grid { gap: 18px; }
+      .product-image { height: 240px; }
+      .values { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#home">
+        <span class="brand-mark">KA</span>
+        Kedai Arya
+      </a>
+
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Kedai Arya</div>
+        <h1>Rasa Lokal, Kualitas Istimewa.</h1>
+        <p>
+          Selamat datang di Kedai Arya. Kami menghadirkan pilihan produk
+          bercita rasa khas dengan perhatian pada kualitas, kemasan, dan
+          pengalaman pelanggan.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#produk">Lihat Produk</a>
+          <a class="btn btn-outline" href="#kontak">Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="produk">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Produk Unggulan</div>
+        <h2>Produk Kedai Arya</h2>
+        <p>
+          pilihan produk yang dapat Anda nikmati dari Kedai Arya
+        </p>
+      </div>
+
+      <div class="product-grid">
+
+        <!-- PRODUK 1 -->
+        <article class="product-card">
+          <img class="product-image" src="(4) WhatsApp_files/amplang sari bulan.jpeg" alt="Foto Produk 1">
+          <div class="product-info">
+            <div class="product-tag">Produk 01</div>
+            <h3>Amplang</h3>
+            <p>
+              Camilan khas Kalimantan dengan cita rasa gurih dan renyah.
+              Cocok untuk oleh-oleh maupun teman bersantai,
+              dengan ukuran yang mini mini bisa langsung makan
+            </p>
+            <a class="btn btn-primary" href="#kontak">Pesan Produk</a>
+          </div>
+        </article>
+
+        <!-- PRODUK 2 -->
+        <article class="product-card">
+          <img class="product-image" src="(4) WhatsApp_files/jentik keju.jpeg" alt="Foto Produk 2">
+          <div class="product-info">
+            <div class="product-tag">Produk 02</div>
+            <h3>Jentik Keju</h3>
+            <p>
+              Jentik Keju atau Telur Gabus adalah camilan renyah berbentuk kecil dengan rasa gurih dan keju yang khas.
+              Teksturnya ringan, renyah, dan cocok dinikmati sebagai camilan sehari-hari bersama keluarga.
+            </p>
+            <a class="btn btn-primary" href="#kontak">Pesan Produk</a>
+          </div>
+        </article>
+
+        <!-- PRODUK 3 -->
+        <article class="product-card">
+          <img class="product-image" src="(4) WhatsApp_files/abon tuna.jpeg" alt="Foto Produk 3">
+          <div class="product-info">
+            <div class="product-tag">Produk 03</div>
+            <h3>Abon Tuna</h3>
+            <p>
+              Abon Tuna adalah olahan daging ikan tuna yang gurih, lezat, dan kaya cita rasa.
+              Teksturnya lembut dan berserat, cocok dinikmati sebagai lauk pendamping nasi, isian makanan, maupun camilan.
+            </p>
+            <a class="btn btn-primary" href="#kontak">Pesan Produk</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="tentang">
+    <div class="container about-grid">
+      <img class="about-image" src="logo kedai arya.jpeg" alt="Foto Kedai Arya">
+
+      <div>
+        <div class="eyebrow">Tentang Kami</div>
+        <h2>Kedai Arya</h2>
+        <p>
+          Kedai Arya adalah usaha yang menyediakan berbagai produk pilihan dengan mengutamakan kualitas, rasa, dan kepuasan pelanggan. Website ini dibuat untuk memudahkan pelanggan mengenal, mencari, dan melihat berbagai produk Kedai Arya dengan lebih praktis sebelum melakukan pembelian.
+          Kami terus berusaha menghadirkan produk yang berkualitas dengan pelayanan yang ramah dan mudah diakses. Kedai Arya, pilihan produk berkualitas untuk menemani setiap kebutuhanmu.
+        </p>
+
+        <div class="values">
+          <div class="value">Berkualitas</div>
+          <div class="value">Kreatif</div>
+          <div class="value">Lokal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <div class="container contact-box">
+      <div>
+        <div class="eyebrow">Hubungi Kami</div>
+        <h2>TEMUKAN PRODUK PILIHANMU,
+          Cari dengan Mudah, Temukan yang Kamu Suka!
+        </h2>
+      </div>
+
+      <div class="contact-info">
+        <p><strong>WhatsApp:</strong> 0821-3652-0400</p>
+        <p><strong>Instagram:</strong> @kedaiarya_23</p>
+        <p><strong>Email:</strong> kedaiarya@email.com</p>
+        <p><strong>Lokasi:</strong> Kalimantan Timur, Indonesia</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Kedai Arya. Semua Hak Dilindungi.
+  </div>
+</footer>
+
+</body>
+</html>
